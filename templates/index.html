@@ -1,0 +1,474 @@
+{% extends "base.html" %}
+{% block nav_home %}active{% endblock %}
+{% block unique_body %}
+<div class="hero-body">
+  <div class="container my-5">
+    <div class="paralax">
+      <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg p-4">
+        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+          <img src="static/images/worldometer-two-lines.png" class="display-5 fw-bold text-body-emphasis lh-1 mb-3" alt="World O'Meter" width="100%">
+          <p class="lead" style="font-size: 29px;">The meter of freedom spread out over the world</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+             <a href="#more" type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Tell me more</a>
+              <a href="contact_button" type="button" class="btn btn-outline-secondary btn-lg px-4">Contact</a>
+            </div>
+        </div>
+          <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden">
+            <img class="rounded-lg-3" src="static/images/globe.png" alt="globe" width="130%">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" preserveAspectRatio="none"><path fill="#aeccfa" fill-opacity="1" d="M0,64L60,80C120,96,240,128,360,138.7C480,149,600,139,720,117.3C840,96,960,64,1080,74.7C1200,85,1320,139,1380,165.3L1440,192L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg> 
+</div>
+
+<div id="more" class="container px-4 py-5">
+
+  <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+    <div class="col d-flex flex-column align-items-start gap-2">
+      <h2 class="fw-bold text-body-emphasis">Freedom in the World</h2>
+      <p>The amount of freedom is calculated into a score from 1 to 100. This calculation is done by the Freedom House and is calculated using a lot of different scores.</p>
+      <a href="/about" class="btn btn-primary btn-lg">Learn more about the data</a>
+    </div>
+
+    <div class="col">
+      <div class="row row-cols-1 row-cols-sm-2 g-4">
+        <div class="col d-flex flex-column gap-2">
+          <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
+                  <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
+                </svg>
+          </div>
+          <h4 class="fw-semibold mb-0 text-body-emphasis">Political Rights</h4>
+          <p>One of the scores is the Political Rights score, this is based on the electoral process, pluralism and participation, and the functioning of the government.</p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-person" viewBox="0 0 16 16">
+                  <path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                  <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                </svg>
+          </div>
+          <h4 class="fw-semibold mb-0 text-body-emphasis">Civil Liberties</h4>
+          <p>Another part of the score is the Civil Liberties, which is based on freedom of expression, organizational rights, rule of law, and individual rights.</p>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+<h2 class="fw-bold text-body-emphasis">And now it's time for "The Freedometer"&trade;</h2>
+    
+    <label for="country-select">Select a country:</label>
+    <select id="country-select" onchange="updateCharts()">
+    </select>
+
+    <div style="display: flex;" class="container">
+        <div class="col" id="freedom-score-gauge" style="width: 50%; height: 400px;"></div>
+        <div class="col" id="hq-gauge" style="width: 50%; height: 400px;"></div>
+        
+    </div>
+</div>
+ <br> <br> 
+     
+ <div class="container px-4 py-5">
+  <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+    <div class="col d-flex flex-column align-items-start gap-2">
+      <h2 class="fw-bold text-body-emphasis">Surveillance Companies</h2>
+      <p>The Surveillance Industry Index (SII) catalogues 97 surveillance technologies from 338 companies across 36 countries, revealing concerning human rights risks associated with their deployment in repressive regimes.</p>
+      <a href="/about" class="btn btn-primary btn-lg">Learn more about the data</a>
+    </div>
+  <div class="col">
+    <div class="row row-cols-1 row-cols-sm-2 g-4">
+      <div class="col d-flex flex-column gap-2">
+        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe-europe-africa" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M3.668 2.501l-.288.646a.847.847 0 0 0 1.479.815l.245-.368a.81.81 0 0 1 1.034-.275.81.81 0 0 0 .724 0l.261-.13a1 1 0 0 1 .775-.05l.984.34q.118.04.243.054c.784.093.855.377.694.801-.155.41-.616.617-1.035.487l-.01-.003C8.274 4.663 7.748 4.5 6 4.5 4.8 4.5 3.5 5.62 3.5 7c0 1.96.826 2.166 1.696 2.382.46.115.935.233 1.304.618.449.467.393 1.181.339 1.877C6.755 12.96 6.674 14 8.5 14c1.75 0 3-3.5 3-4.5 0-.262.208-.468.444-.7.396-.392.87-.86.556-1.8-.097-.291-.396-.568-.641-.756-.174-.133-.207-.396-.052-.551a.33.33 0 0 1 .42-.042l1.085.724c.11.072.255.058.348-.035.15-.15.415-.083.489.117.16.43.445 1.05.849 1.357L15 8A7 7 0 1 1 3.668 2.501"/>
+          </svg>
+        </div>
+        <h4 class="fw-semibold mb-0 text-body-emphasis">Different Countries</h4>
+        <p>The data includes many companies that have their headquarters (HQ) in a lot of different cities. One of the variables is HQ city.</p>
+      </div>
+
+      <div class="col d-flex flex-column gap-2">
+        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-router" viewBox="0 0 16 16">
+            <path d="M5.525 3.025a3.5 3.5 0 0 1 4.95 0 .5.5 0 1 0 .707-.707 4.5 4.5 0 0 0-6.364 0 .5.5 0 0 0 .707.707"/>
+            <path d="M6.94 4.44a1.5 1.5 0 0 1 2.12 0 .5.5 0 0 0 .708-.708 2.5 2.5 0 0 0-3.536 0 .5.5 0 0 0 .707.707ZM2.5 11a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m4.5-.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m2.5.5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m1.5-.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0"/>
+            <path d="M2.974 2.342a.5.5 0 1 0-.948.316L3.806 8H1.5A1.5 1.5 0 0 0 0 9.5v2A1.5 1.5 0 0 0 1.5 13H2a.5.5 0 0 0 .5.5h2A.5.5 0 0 0 5 13h6a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5h.5a1.5 1.5 0 0 0 1.5-1.5v-2A1.5 1.5 0 0 0 14.5 8h-2.306l1.78-5.342a.5.5 0 1 0-.948-.316L11.14 8H4.86zM14.5 9a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5z"/>
+            <path d="M8.5 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+          </svg>
+        </div>
+        <h4 class="fw-semibold mb-0 text-body-emphasis">Tech they sell</h4>
+        <p>Another variable is the kind of tech these companies sell. There are a lot of companies, and they sell a lot of different things.</p>
+      </div>
+  </div>
+</div>
+</div>
+
+
+  <div class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Security companies around the world</h3>
+            <p>Below you can see the amount of security companies in each country. The idea was that the more security companies a country has, the less free the country is. This however, is not the case.</p>
+            <div id="amount-of-companies">
+                <img src="static/images/graphs/amount-per-country.png" alt="Amount of security companies per country" width="95%">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h3>Which technology do the different companies sell?</h3>
+            <p>Here is shown which technologies are being sold by the different surveillance companies.</p>
+            <div id="amount-of-companies">
+                <img src="static/images/graphs/distribution-of-technology.png" alt="Distribution of technologies sold" width="100%">
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container my-5">
+  <div class="row">
+      <div class="col-md-6">
+          <h3>Showing the correlation</h3>
+          <p>The correlation cannot be seen super good. This is the case, because most security companies by far are in the United States</p>
+          <div id="amount-of-companies">
+              <img src="static/images/graphs/correlation_with_america.png" alt="Correlation including America" width="100%">
+          </div>
+      </div>
+
+      <div class="col-md-6">
+          <h3>Would removing America help?</h3>
+          <p>In the figure below, you can see a slightly upward trend a bit more clearly, when removing the outlier America.</p>
+          <div id="amount-of-companies">
+              <img src="static/images/graphs/correlation_without_america.png" alt="Correlation not including America" width="100%">
+          </div>
+      </div>
+  </div>
+</div>
+    
+    
+
+
+
+    <script>
+        var hqCountsData = [
+        {"country": "Mexico", "hq_count": 2},
+    {"country": "United States", "hq_count": 208},
+    {"country": "Estonia", "hq_count": 1},
+    {"country": "India", "hq_count": 6},
+    {"country": "Philippines", "hq_count": 11},
+    {"country": "France", "hq_count": 17},
+    {"country": "Germany", "hq_count": 28},
+    {"country": "Trinidad and Tobago", "hq_count": 1},
+    {"country": "Czechia", "hq_count": 7},
+    {"country": "South Korea", "hq_count": 2},
+    {"country": "China", "hq_count": 7},
+    {"country": "Croatia", "hq_count": 1},
+    {"country": "Sweden", "hq_count": 6},
+    {"country": "Malta", "hq_count": 1},
+    {"country": "South Africa", "hq_count": 11},
+    {"country": "Lithuania", "hq_count": 3},
+    {"country": "Israel", "hq_count": 5},
+    {"country": "Slovenia", "hq_count": 1},
+    {"country": "United Kingdom", "hq_count": 35},
+    {"country": "Spain", "hq_count": 1},
+    {"country": "Hungary", "hq_count": 3},
+    {"country": "Taiwan", "hq_count": 2},
+    {"country": "Cyprus", "hq_count": 1},
+    {"country": "Italy", "hq_count": 13},
+    {"country": "Bulgaria", "hq_count": 1},
+    {"country": "Japan", "hq_count": 3},
+    {"country": "New Zealand", "hq_count": 2},
+    {"country": "Australia", "hq_count": 3},
+    {"country": "Singapore", "hq_count": 2},
+    {"country": "United Arab Emirates", "hq_count": 5},
+    {"country": "Hong Kong", "hq_count": 1},
+    {"country": "Portugal", "hq_count": 3},
+    {"country": "Poland", "hq_count": 1},
+    {"country": "Canada", "hq_count": 8},
+    {"country": "Belgium", "hq_count": 2},
+    {"country": "Turkey", "hq_count": 6},
+    {"country": "Switzerland", "hq_count": 3},
+    {"country": "Finland", "hq_count": 3},
+    {"country": "Denmark", "hq_count": 4},
+    {"country": "Norway", "hq_count": 2},
+    {"country": "Colombia", "hq_count": 2},
+    {"country": "Bangladesh", "hq_count": 1},
+    {"country": "Netherlands", "hq_count": 3},
+    {"country": "Malaysia", "hq_count": 1},
+    {"country": "Venezuela", "hq_count": 2},
+    {"country": "Jordan", "hq_count": 1}
+        ];
+
+        var freedomScoresData = [
+        {"country": "Abkhazia", "freedom_score": 39},
+    {"country": "Afghanistan", "freedom_score": 8},
+    {"country": "Albania", "freedom_score": 67},
+    {"country": "Algeria", "freedom_score": 32},
+    {"country": "Andorra", "freedom_score": 93},
+    {"country": "Angola", "freedom_score": 28},
+    {"country": "Antigua and Barbuda", "freedom_score": 85},
+    {"country": "Argentina", "freedom_score": 85},
+    {"country": "Armenia", "freedom_score": 54},
+    {"country": "Australia", "freedom_score": 95},
+    {"country": "Austria", "freedom_score": 93},
+    {"country": "Azerbaijan", "freedom_score": 9},
+    {"country": "Bahamas", "freedom_score": 91},
+    {"country": "Bahrain", "freedom_score": 12},
+    {"country": "Bangladesh", "freedom_score": 40},
+    {"country": "Barbados", "freedom_score": 94},
+    {"country": "Belarus", "freedom_score": 8},
+    {"country": "Belgium", "freedom_score": 96},
+    {"country": "Belize", "freedom_score": 87},
+    {"country": "Benin", "freedom_score": 59},
+    {"country": "Bhutan", "freedom_score": 61},
+    {"country": "Bolivia", "freedom_score": 66},
+    {"country": "Bosnia and Herzegovina", "freedom_score": 52},
+    {"country": "Botswana", "freedom_score": 72},
+    {"country": "Brazil", "freedom_score": 72},
+    {"country": "Brunei", "freedom_score": 28},
+    {"country": "Bulgaria", "freedom_score": 79},
+    {"country": "Burkina Faso", "freedom_score": 30},
+    {"country": "Burundi", "freedom_score": 14},
+    {"country": "Cabo Verde", "freedom_score": 92},
+    {"country": "Cambodia", "freedom_score": 24},
+    {"country": "Cameroon", "freedom_score": 15},
+    {"country": "Canada", "freedom_score": 98},
+    {"country": "Central African Republic", "freedom_score": 7},
+    {"country": "Chad", "freedom_score": 15},
+    {"country": "Chile", "freedom_score": 94},
+    {"country": "China", "freedom_score": 9},
+    {"country": "Colombia", "freedom_score": 70},
+    {"country": "Comoros", "freedom_score": 42},
+    {"country": "Congo (Brazzaville)", "freedom_score": 17},
+    {"country": "Congo (Kinshasa)", "freedom_score": 19},
+    {"country": "Costa Rica", "freedom_score": 91},
+    {"country": "Cote d'Ivoire", "freedom_score": 49},
+    {"country": "Crimea", "freedom_score": 4},
+    {"country": "Croatia", "freedom_score": 84},
+    {"country": "Cuba", "freedom_score": 12},
+    {"country": "Cyprus", "freedom_score": 92},
+    {"country": "Czechia", "freedom_score": 92},
+    {"country": "Denmark", "freedom_score": 97},
+    {"country": "Djibouti", "freedom_score": 24},
+    {"country": "Dominica", "freedom_score": 93},
+    {"country": "Dominican Republic", "freedom_score": 68},
+    {"country": "Eastern Donbas", "freedom_score": 3},
+    {"country": "Ecuador", "freedom_score": 70},
+    {"country": "Egypt", "freedom_score": 18},
+    {"country": "El Salvador", "freedom_score": 56},
+    {"country": "Equatorial Guinea", "freedom_score": 5},
+    {"country": "Eritrea", "freedom_score": 3},
+    {"country": "Estonia", "freedom_score": 94},
+    {"country": "Eswatini", "freedom_score": 17},
+    {"country": "Ethiopia", "freedom_score": 21},
+    {"country": "Fiji", "freedom_score": 59},
+    {"country": "Finland", "freedom_score": 100},
+    {"country": "France", "freedom_score": 89},
+    {"country": "Gabon", "freedom_score": 20},
+    {"country": "Gaza Strip", "freedom_score": 11},
+    {"country": "Georgia", "freedom_score": 58},
+    {"country": "Germany", "freedom_score": 94},
+    {"country": "Ghana", "freedom_score": 80},
+    {"country": "Greece", "freedom_score": 86},
+    {"country": "Grenada", "freedom_score": 89},
+    {"country": "Guatemala", "freedom_score": 49},
+    {"country": "Guinea", "freedom_score": 30},
+    {"country": "Guinea-Bissau", "freedom_score": 43},
+    {"country": "Guyana", "freedom_score": 73},
+    {"country": "Haiti", "freedom_score": 31},
+    {"country": "Honduras", "freedom_score": 48},
+    {"country": "Hong Kong", "freedom_score": 42},
+    {"country": "Hungary", "freedom_score": 66},
+    {"country": "Iceland", "freedom_score": 94},
+    {"country": "India", "freedom_score": 66},
+    {"country": "Indian Kashmir", "freedom_score": 27},
+    {"country": "Indonesia", "freedom_score": 58},
+    {"country": "Iran", "freedom_score": 12},
+    {"country": "Iraq", "freedom_score": 29},
+    {"country": "Ireland", "freedom_score": 97},
+    {"country": "Israel", "freedom_score": 77},
+    {"country": "Italy", "freedom_score": 90},
+    {"country": "Jamaica", "freedom_score": 80},
+    {"country": "Japan", "freedom_score": 96},
+    {"country": "Jordan", "freedom_score": 33},
+    {"country": "Kazakhstan", "freedom_score": 23},
+        {"country": "Kenya", "freedom_score": 52},
+    {"country": "Kiribati", "freedom_score": 91},
+    {"country": "Kosovo", "freedom_score": 60},
+    {"country": "Kuwait", "freedom_score": 37},
+    {"country": "Kyrgyzstan", "freedom_score": 27},
+    {"country": "Laos", "freedom_score": 13},
+    {"country": "Latvia", "freedom_score": 88},
+    {"country": "Lebanon", "freedom_score": 43},
+    {"country": "Lesotho", "freedom_score": 66},
+    {"country": "Liberia", "freedom_score": 60},
+    {"country": "Libya", "freedom_score": 10},
+    {"country": "Liechtenstein", "freedom_score": 90},
+    {"country": "Lithuania", "freedom_score": 89},
+    {"country": "Luxembourg", "freedom_score": 97},
+    {"country": "Madagascar", "freedom_score": 61},
+    {"country": "Malawi", "freedom_score": 66},
+    {"country": "Malaysia", "freedom_score": 53},
+    {"country": "Maldives", "freedom_score": 41},
+    {"country": "Mali", "freedom_score": 29},
+    {"country": "Malta", "freedom_score": 89},
+    {"country": "Marshall Islands", "freedom_score": 93},
+    {"country": "Mauritania", "freedom_score": 36},
+    {"country": "Mauritius", "freedom_score": 85},
+    {"country": "Mexico", "freedom_score": 60},
+    {"country": "Micronesia", "freedom_score": 92},
+    {"country": "Moldova", "freedom_score": 62},
+    {"country": "Monaco", "freedom_score": 84},
+    {"country": "Mongolia", "freedom_score": 84},
+    {"country": "Montenegro", "freedom_score": 67},
+    {"country": "Morocco", "freedom_score": 37},
+    {"country": "Mozambique", "freedom_score": 45},
+    {"country": "Myanmar", "freedom_score": 9},
+    {"country": "Nagorno-Karabakh", "freedom_score": 37},
+    {"country": "Namibia", "freedom_score": 77},
+    {"country": "Nauru", "freedom_score": 77},
+    {"country": "Nepal", "freedom_score": 58},
+    {"country": "Netherlands", "freedom_score": 97},
+    {"country": "New Zealand", "freedom_score": 99},
+    {"country": "Nicaragua", "freedom_score": 19},
+    {"country": "Niger", "freedom_score": 51},
+    {"country": "Nigeria", "freedom_score": 43},
+    {"country": "North Korea", "freedom_score": 3},
+    {"country": "North Macedonia", "freedom_score": 68},
+    {"country": "Northern Cyprus", "freedom_score": 76},
+    {"country": "Norway", "freedom_score": 100},
+    {"country": "Oman", "freedom_score": 24},
+    {"country": "Pakistan", "freedom_score": 37},
+    {"country": "Pakistani Kashmir", "freedom_score": 29},
+    {"country": "Palau", "freedom_score": 92},
+    {"country": "Panama", "freedom_score": 83},
+    {"country": "Papua New Guinea", "freedom_score": 61},
+    {"country": "Paraguay", "freedom_score": 65},
+    {"country": "Peru", "freedom_score": 70},
+    {"country": "Philippines", "freedom_score": 58},
+    {"country": "Poland", "freedom_score": 81},
+    {"country": "Portugal", "freedom_score": 96},
+    {"country": "Qatar", "freedom_score": 25},
+    {"country": "Romania", "freedom_score": 83},
+    {"country": "Russia", "freedom_score": 16},
+    {"country": "Rwanda", "freedom_score": 23},
+    {"country": "Samoa", "freedom_score": 83},
+    {"country": "San Marino", "freedom_score": 97},
+    {"country": "Sao Tome and Principe", "freedom_score": 84},
+    {"country": "Saudi Arabia", "freedom_score": 8},
+    {"country": "Senegal", "freedom_score": 68},
+    {"country": "Serbia", "freedom_score": 60},
+    {"country": "Seychelles", "freedom_score": 79},
+    {"country": "Sierra Leone", "freedom_score": 63},
+    {"country": "Singapore", "freedom_score": 47},
+    {"country": "Slovakia", "freedom_score": 90},
+    {"country": "Slovenia", "freedom_score": 95},
+    {"country": "Solomon Islands", "freedom_score": 76},
+    {"country": "Somalia", "freedom_score": 8},
+    {"country": "Somaliland", "freedom_score": 44},
+    {"country": "South Africa", "freedom_score": 79},
+    {"country": "South Korea", "freedom_score": 83},
+    {"country": "South Ossetia", "freedom_score": 12},
+    {"country": "South Sudan", "freedom_score": 1},
+    {"country": "Spain", "freedom_score": 90},
+    {"country": "Sri Lanka", "freedom_score": 54},
+    {"country": "St. Kitts and Nevis", "freedom_score": 89},
+    {"country": "St. Lucia", "freedom_score": 92},
+    {"country": "St.Vincent and the Grenadines", "freedom_score": 91},
+{"country": "Sudan", "freedom_score": 10},
+{"country": "Suriname", "freedom_score": 79},
+{"country": "Sweden", "freedom_score": 100},
+{"country": "Switzerland", "freedom_score": 96},
+{"country": "Syria", "freedom_score": 1},
+{"country": "Taiwan", "freedom_score": 94},
+{"country": "Tajikistan", "freedom_score": 7},
+{"country": "Tanzania", "freedom_score": 36},
+{"country": "Thailand", "freedom_score": 30},
+{"country": "The Gambia", "freedom_score": 48},
+{"country": "Tibet", "freedom_score": 1},
+{"country": "Timor-Leste", "freedom_score": 72},
+{"country": "Togo", "freedom_score": 42},
+{"country": "Tonga", "freedom_score": 81},
+{"country": "Transnistria", "freedom_score": 18},
+{"country": "Trinidad and Tobago", "freedom_score": 82},
+{"country": "Tunisia", "freedom_score": 56},
+{"country": "Turkey", "freedom_score": 32},
+{"country": "Turkmenistan", "freedom_score": 2},
+{"country": "Tuvalu", "freedom_score": 93},
+{"country": "Uganda", "freedom_score": 35},
+{"country": "Ukraine", "freedom_score": 50},
+{"country": "United Arab Emirates", "freedom_score": 18},
+{"country": "United Kingdom", "freedom_score": 93},
+{"country": "United States", "freedom_score": 83},
+{"country": "Uruguay", "freedom_score": 96},
+{"country": "Uzbekistan", "freedom_score": 12},
+{"country": "Vanuatu", "freedom_score": 82},
+{"country": "Venezuela", "freedom_score": 15},
+{"country": "Vietnam", "freedom_score": 19},
+{"country": "West Bank", "freedom_score": 22},
+{"country": "Western Sahara", "freedom_score": 4},
+{"country": "Yemen", "freedom_score": 9},
+{"country": "Zambia", "freedom_score": 54},
+{"country": "Zimbabwe", "freedom_score": 28}
+        ];
+
+        var countries = hqCountsData.map(entry => entry.country);
+
+        var selectElement = document.getElementById("country-select");
+        countries.forEach(country => {
+            var option = document.createElement("option");
+            option.text = country;
+            selectElement.add(option);
+        });
+
+        var freedomScoreGauge = {
+            type: 'indicator',
+            mode: 'gauge+number',
+            value: freedomScoresData[0].freedom_score, 
+            gauge: {
+                axis: { range: [null, 100] }, 
+                bar: { color: "#4D4D4D" },
+                steps: [
+                    { range: [0, 25], color: "#FF0000" },
+                    { range: [25, 50], color: "#FF8D2E" },
+                    { range: [50, 75], color: "#FFE52E" },
+                    { range: [75, 100], color: "#66E52E" }
+                ]
+            },
+            title: { text: 'Freedom Score' }
+        };
+
+        var hqGauge = {
+            type: 'indicator',
+            mode: 'gauge+number',
+            value: hqCountsData[0].hq_count, 
+            gauge: {
+                axis: { range: [null, Math.max(...hqCountsData.map(entry => entry.hq_count))] },
+                bar: { color: "green" },
+                steps: [
+                    { range: [0, Math.max(...hqCountsData.map(entry => entry.hq_count)) * 0.3], color: "lightgray" },
+                    { range: [Math.max(...hqCountsData.map(entry => entry.hq_count)) * 0.3, Math.max(...hqCountsData.map(entry => entry.hq_count)) * 0.7], color: "gray" },
+                    { range: [Math.max(...hqCountsData.map(entry => entry.hq_count)) * 0.7, Math.max(...hqCountsData.map(entry => entry.hq_count))], color: "darkgray" }
+                ]
+            },
+            title: { text: 'Amount of Surveillance Companies' }
+        };
+
+        Plotly.newPlot('hq-gauge', [hqGauge]);
+        Plotly.newPlot('freedom-score-gauge', [freedomScoreGauge]);
+
+        function updateCharts() {
+            var selectedCountry = selectElement.value;
+            var selectedHQCount = hqCountsData.find(entry => entry.country === selectedCountry).hq_count;
+            var selectedFreedomScore = freedomScoresData.find(entry => entry.country === selectedCountry).freedom_score;
+
+            Plotly.restyle('hq-gauge', 'value', [selectedHQCount]);
+            
+            Plotly.restyle('freedom-score-gauge', 'value', [selectedFreedomScore]);
+        }
+    </script>
+{% endblock %}

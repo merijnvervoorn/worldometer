@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block nav_about %}active{% endblock %}
+{% block unique_body %}
+
+<div class="container py-5">
+        <h1><b>About</b><br><small class="text-body-secondary">Tell me more</small></h1> <br>
+        <br><br>
+        <h2 class="fw-bold text-body-emphasis">What is the freedom in the world dataset?</h2>
+        
+        <p>
+                The Freedom in the World dataset by Freedom House is an essential tool for evaluating the state of freedom across the globe. 
+                This dataset, spanning from 2013 through 2023, consistently uses the same indicators to provide a comprehensive analysis. 
+
+                For data-analysis purposes, Freedom House categorizes countries and territories into six distinct world regions: Africa, 
+                the Americas, Asia-Pacific, Eurasia, Europe, and the Middle East. It's important to highlight that, prior to the 2022 edition, 
+                countries in North Africa were grouped with the Middle East rather than with the rest of Africa.
+
+                On this website we only use the 2023 edition, as comparing different years to each other requires a different approach.
+                The approach that was chosen for on this website highlights a combination of this dataset with a different one.
+
+                The dataset includes various metrics to measure freedom, such as the Political Rights Rating (PR Rating) and the Civil Liberties 
+                Rating (CL Rating). These ratings are further broken down into subcategories. For instance, the Electoral Process, Political 
+                Pluralism and Participation, and Functioning of Government subcategories provide detailed insights into the political rights 
+                landscape. Similarly, civil liberties are assessed through subcategories like Freedom of Expression and Belief, Associational and 
+                Organizational Rights, Rule of Law, and Personal Autonomy and Individual Rights. Additionally, the dataset includes scores for 
+                aggregate categories and specific discretionary questions.
+        </p>
+<br><br>
+        <h2 class="fw-bold text-body-emphasis">What is the Surveillance Companies dataset?</h2>
+        <p>
+                Privacy International's Surveillance Industry Index (SII) is the most comprehensive publicly available database on the private 
+                surveillance sector. Compiled over four years, the SII includes 1,203 documents detailing 97 surveillance technologies from 338 
+                companies across 36 countries. This research is part of the Big Brother Incorporated project, which investigates the sale of 
+                surveillance technologies by Western companies to repressive regimes.
+
+                The findings highlight the alarming capabilities of these technologies, such as remote access to computers, mass interception of 
+                communications, social network monitoring, and location tracking of mobile phones. These technologies are often sold to regimes that 
+                use them to stifle dissent and target activists, posing significant human rights risks.
+
+                The SII aims to expand public understanding of the surveillance industry by providing detailed analysis and contextual information. 
+                This transparency is crucial for advocating effective oversight and regulation of the industry. By offering comprehensive information 
+                on the private surveillance sector, the SII empowers the public to demand accountability and engage in informed discussions about the 
+                impact of these technologies on privacy and freedom of expression.
+
+                The usage of this dataset on the website is not the best of its capabilities, as it is used to show the presence of surveillance companies
+                in countries. This is done by counting the number of companies in a country and comparing it to the freedom of that country. As there are
+                only 36 countries in the dataset, the results are not as accurate as they could be.
+        </p>
+</div>
+    
+{% endblock %}
