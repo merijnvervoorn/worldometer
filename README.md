@@ -1,6 +1,5 @@
 # 🌐 World-o-meter
 
-![World-o-meter Hero](./assets/hero.png)
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)  
 **Version:** 1.0.0  
 **Motivation:** Computational Social Science at the University of Amsterdam  
@@ -16,6 +15,8 @@ The idea is to explore whether:
 - Global distributions reveal patterns of surveillance in relation to political freedom.
 
 💡 **Note:** With only **528 companies** spread across **45 countries**, the sample size is limited, but the exploration is valuable and may still yield interesting insights.
+
+![World-o-meter Hero](./assets/hero.png)
 
 ---
 
